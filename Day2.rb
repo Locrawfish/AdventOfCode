@@ -1001,11 +1001,11 @@ presents = "29x13x26
 
 presents_array = presents.split(' ').map{|line| line.split('x').map(&:to_i)}
 
-dimensions = 0
+wrapping_paper = 0
 
-presents_array.each {|i| dimensions += 2*i[0]*i[1]+2*i[1]*i[2]+2*i[0]*i[2]+(i.sort[0] * i.sort[1])}
+presents_array.each {|i| wrapping_paper += 2*i[0]*i[1]+2*i[1]*i[2]+2*i[0]*i[2]+(i.sort[0] * i.sort[1])}
 
-puts dimensions
+puts wrapping_paper
 
 # part 2
 ribbon = 0
