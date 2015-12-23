@@ -1007,7 +1007,11 @@ presents_array.each {|i| dimensions += 2*i[0]*i[1]+2*i[1]*i[2]+2*i[0]*i[2]+(i.so
 
 puts dimensions
 
+# part 2
+ribbon = 0
 
+presents_array.each {|i| ribbon += (i.sort[0] *2) +(2* i.sort[1]) + i[0]*i[1]*i[2]}
+puts ribbon
 
 
 
