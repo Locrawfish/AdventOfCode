@@ -996,7 +996,7 @@ presents = "29x13x26
 23x3x6
 27x26x11
 3x2x22
-14x3x5
+14x3xv 
 10x9x8"
 
 presents_array = presents.split(' ').map{|line| line.split('x').map(&:to_i)}

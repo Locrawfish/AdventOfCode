@@ -2,26 +2,55 @@ houses = "v>v<vvv<<vv^v<v>vv>v<<<^^^^^<<^<vv>^>v^>^>^>^>^><vvvv<^>^<<^><<<^vvvv>
 "
 houses_array = houses.split('')
 
+# part 1
+# santas_location = [0,0]
+# visited_house = {[0,0] => 1}
+
+# houses_array.each do |direction|
+# case direction
+# 	when '^'
+#     santas_location[1] += 1
+#   when 'v'
+#     santas_location[1] -= 1
+#   when '<'
+#     santas_location[0] -= 1
+#   when '>'
+#     santas_location[0] += 1
+#  end
+#  if visited_house[santas_location]
+#     visited_house[santas_location] += 1
+#     else
+#       visited_house[santas_location] = 1
+#      end
+# end
+
+# puts visited_house.count
+
+# part 2 
 santas_location = [0,0]
+robot_location = [0,0]
 visited_house = {[0,0] => 1}
 
-houses_array.each do |direction|
-case direction
-	when '^'
-    santas_location[1] += 1
-  when 'v'
-    santas_location[1] -= 1
-  when '<'
-    santas_location[0] -= 1
-  when '>'
-    santas_location[0] += 1
- end
- if visited_house[santas_location]
-    visited_house[santas_location] += 1
-    else
-      visited_house[santas_location] = 1
-     end
+houses_array.each_with_index do |direction, index|
+	turn = index%2==0
+	case direction
+		when '^'
+	    turn ? santas_location[1] += 1 : robot_location[1] += 1 
+	  when 'v'
+	    turn ? santas_location[1] -= 1 : robot_location[1] -= 1 
+	  when '<'
+			turn ? santas_location[0] -= 1 : robot_location[0] -= 1 
+	  when '>'
+	    turn ? santas_location[0] += 1 : robot_location[0] += 1 
+	 end
+
+	location = (turn ? santas_location  : robot_location)
+
+	 if visited_house[[location[0], location[1]]]
+	  visited_house[[location[0], location[1]]] += 1
+	  else
+	    visited_house[[location[0], location[1]]] = 1
+	  end
 end
 
-
-visited_house.count
+puts visited_house.count
